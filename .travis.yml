@@ -6,6 +6,7 @@ branches:
   only:
     - master
     - /^\d+\.\d+$/
+    - test-travis
 
 php:
     - 7.1.26
