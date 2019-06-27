@@ -21,9 +21,10 @@ cache:
 before_script:
   - phpenv config-rm xdebug.ini
   - phpenv config-add travis.php.ini
+  - php -ini | grep memory_limit
   - composer self-update
   - cp dev.json travis.json # avoid dev.lock file and composer.json with a stable version
-  - travis_retry travis_wait composer install --prefer-dist --optimize-autoloader --no-interaction  --no-suggest
+  - COMPOSER_MEMORY_LIMIT=-1  travis_retry travis_wait composer install --prefer-dist --optimize-autoloader --no-interaction  --no-suggest
   - set +e; DIFF=$(git diff --name-only --diff-filter=ACMR $TRAVIS_COMMIT_RANGE | grep -e ".*\.php$"); set -e;
 
 script:
