@@ -9,7 +9,7 @@ branches:
     - test-travis
 
 php:
-    - 7.1.26
+    - 7.2
 
 env:
   - COMPOSER=travis.json
